@@ -31,7 +31,7 @@ var Messages = (function(){
     }
 
     function update() {
-        console.log(messages);+
+        console.log(messages);
         ul.selectAll('li').data(messages).enter().insert("li",":first-child").append('div')
             .attr('class', function(d) {
                 return d.type;
