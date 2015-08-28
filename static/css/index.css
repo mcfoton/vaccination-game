@@ -1,0 +1,276 @@
+html {
+    width: 100%;
+    height: 100%;
+    /*overflow: hidden;*/
+    background: url(../img/bg-index.png) 0 0 no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+body {
+    width: 100%;
+    height: 100%;
+    /*overflow: hidden;*/
+}
+body > .container {
+    width: 100%;
+    height: 100%;
+    /*overflow: hidden;*/
+    text-align: center;
+}
+body > .container::after {
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    vertical-align: middle;
+    width: 0;
+    height: 100%;
+    content: '';
+}
+.game-settings {
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    vertical-align: middle;
+    width: 50%;
+    min-width: 450px;
+    font-family: GothamPro, sans-serif;
+}
+.game-settings .container {
+    width: 450px;
+    margin: 0 auto;
+    text-align: center;
+}
+.game-settings .main {
+    background: #fff;
+    border-top: solid 1px #cccccc;
+    border-bottom: solid 1px #cccccc;
+    font-size: 17px;
+    display: none;
+}
+.game-settings .sub {
+    background: #f2f2f2;
+    padding: 25px 0 30px;
+    font: 15px "GothamPro";
+    color: #626262;
+    display: none;
+}
+.game-settings .main .presents {
+    font-size: 14px;
+    margin: 15px 0 20px;
+}
+.game-settings .main .container {
+    position: relative;
+}
+.game-settings .main .container a.minzdrav,
+.game-settings .main .container a.minzdrav img {
+    display: block;
+    width: 211px;
+    height: 75px;
+    margin: 0 auto;
+}
+.game-settings .main .container a.vac-c,
+.game-settings .main .container a.vac-c img {
+    display: block;
+    width: 101px;
+    height: 17px;
+}
+.game-settings .main .container a.vac-c {
+    position: absolute;
+    left: 50%;
+    margin: 135px 0 0 -55px;
+}
+.game-settings .main .container .description {
+    margin-top: 95px;
+}
+#start-game {
+    position: relative;
+    margin: 17px auto -1px;
+}
+.game-settings .sub a {
+    color: #626262;
+}
+.game-settings .sub .socials {
+    margin: 10px 0;
+}
+.game-settings .sub .socials .social {
+    margin: 0 5px;
+}
+.game-settings .sub .without {
+    display: block;
+    margin-top: 7px;
+}
+#preview {
+    display: none;
+}
+#mode {
+    display: none;
+    padding-top: 57px;
+}
+.game-types {
+    text-align: center;
+}
+.game-type-item {
+    position: relative;
+    width: 220px;
+    height: 65px;
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    vertical-align: top;
+    margin: 2px;
+}
+.game-type-item .game-type-image,
+.game-type-item .game-type-name {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 65px;
+}
+.game-type-item .game-type-image {
+    background: url(../img/choices.png) 0 0 no-repeat;
+}
+.game-type-item .game-type-image.color {
+    z-index: 3;
+}
+.game-type-item .game-type-image.baw {
+    z-index: 4;
+}
+.game-type-item .game-type-name {
+    cursor: pointer;
+    z-index: 5;
+}
+.game-type-item .game-type-image.color-1 {
+    background-position: 0 0;
+}
+.game-type-item .game-type-image.color-2 {
+    background-position: -220px 0;
+}
+.game-type-item .game-type-image.color-3 {
+    background-position: -440px 0;
+}
+.game-type-item .game-type-image.color-4 {
+    background-position: -660px 0;
+}
+.game-type-item .game-type-image.baw-1 {
+    background-position: 0 -65px;
+}
+.game-type-item .game-type-image.baw-2 {
+    background-position: -220px -65px;
+}
+.game-type-item .game-type-image.baw-3 {
+    background-position: -440px -65px;
+}
+.game-type-item .game-type-image.baw-4 {
+    background-position: -660px -65px;
+}
+.game-type-item.chosen .game-type-image.baw {
+    display: none;
+}
+.game-difficulties {
+    position: relative;
+    height: 40px;
+}
+.game-difficulties,
+.game-types {
+    margin-bottom: 10px;
+}
+.game-difficulty-item {
+    width: 33%;
+    height: 35px;
+    font-size: 21px;
+    line-height: 35px;
+    text-align: center;
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    vertical-align: middle;
+    background: #e5e5e5;
+    cursor: pointer;
+}
+.game-difficulty-item.chosen {
+    height: 38px;
+    line-height: 38px;
+    color: #fff;
+    background: url(../img/game-difficulty-bg.png) 0 0 repeat-x;
+    border: 1px solid #86bf5d;
+}
+.game-type-description-container {
+    width: 450px;
+    height: 100px;
+    overflow: hidden;
+}
+.type-descriptions,
+.difficulty-descriptions {
+    display: none;
+}
+
+#settings-form input[type="submit"] {
+    margin-bottom: -1px;
+}
+ul.difficulty-description-item {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ul.difficulty-description-item li {
+    display: block;
+    margin: 0;
+    padding: 0 0 5px 20px;
+    text-align: left;
+    background: url(../img/bg-difficulty-description.png) 0 0 no-repeat;
+}
+.perk {
+    font-family: GothamPro-Medium, sans-serif;
+    padding: 2px 0 3px 3px;
+    color: #9E00BF;
+}
+.perk-d {
+    padding: 10px 15px;
+    border-radius: 3px;
+    background: #e5e5e5;
+}
+.game-difficulty-descriptions,
+.game-type-descriptions {
+    overflow: hidden;
+}
+.game-difficulty-descriptions .wrapper,
+.game-type-descriptions .wrapper {
+    width: 900px;
+}
+.game-difficulty-descriptions .wrapper > div,
+.game-type-descriptions .wrapper > div {
+    width: 430px;
+    padding: 10px;
+    float: left;
+    min-height: 120px;
+}
+.game-type,
+.game-difficulty {
+    padding-bottom: 10px;
+}
+form#settings-form {
+    position: relative;
+}
+input#virus-name {
+    display: none;
+    position: absolute;
+    width: 270px;
+    left: 50%;
+    margin: -90px 0 0 -140px;
+    padding: 5px 10px;
+    outline: none;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+input#virus-name.error {
+    border-color: #a94442;
+}

@@ -1,0 +1,96 @@
+@font-face {
+    font-family: 'GothamPro';
+    src: url('../fonts/GothamPro.eot');
+    src: url('../fonts/GothamProd41d.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/GothamPro.woff') format('woff'),
+    url('../fonts/GothamPro.ttf') format('truetype'),
+    url('../fonts/GothamPro.svg#GothamPro') format('svg')
+}
+@font-face {
+    font-family: 'GothamPro-Medium';
+    src: url('../fonts/GothamPro-Medium.eot');
+    src: url('../fonts/GothamPro-Mediumd41d.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/GothamPro-Medium.woff') format('woff'),
+    url('../fonts/GothamPro-Medium.ttf') format('truetype'),
+    url('../fonts/GothamPro-Medium.svg#GothamPro-Medium') format('svg')
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    *zoom: 1;
+}
+.pull-left {
+    float: left;
+}
+.pull-right {
+    float: right;
+}
+html, body {
+    padding: 0;
+    margin: 0;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    opacity: 0.8;
+    z-index: 10;
+    display: none;
+}
+.btn {
+    font: 17px "GothamPro-Medium";
+    padding: 14px 35px 10px;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    color: #fff;
+    background: #000;
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+.btn.btn-gray {
+    color: #fff;
+    background: #666666;
+}
+.socials .social {
+    background: url(../img/socials.png) 0 0 no-repeat;
+    width: 24px;
+    height: 24px;
+    text-decoration: none;
+    cursor: pointer;
+    text-indent: -9999px;
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+.socials .social-vk {
+    background-position: 0 -24px;
+}
+.socials .social-vk:hover {
+    background-position: 0 0;
+}
+.socials .social-ok {
+    background-position: -24px -24px;
+}
+.socials .social-ok:hover {
+    background-position: -24px 0;
+}
+.socials .social-fb {
+    background-position: -48px -24px;
+}
+.socials .social-fb:hover {
+    background-position: -48px 0;
+}
