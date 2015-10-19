@@ -1,0 +1,106 @@
+{% extends 'layout.html' %}
+{% load staticfiles %}
+
+{% block extrabody %}
+    <script src="{% static "js/game/Graph.js" %}"></script>
+    <script src="{% static "js/game/AI.js" %}"></script>
+    <script src="{% static "js/game/Messages.js" %}"></script>
+    <script src="{% static "js/game/Game.js" %}"></script>
+    <script src="{% static "js/game/init.js" %}"></script>
+{% endblock %}
+{% block game_data %}
+    <script>
+        var params = {{ params_json | safe }};
+        var static_url = {{ STATIC_URL }};
+    </script>
+{% endblock %}
+{% block content %}
+    <div class="results-container">
+        <div class="results">
+            <div class="container">
+                <a class="vac-c" href="/"><img src="{% static "img/vac-logo.png" %}"></a>
+                <div class="results-greeting">
+                    {% if params.game_type == 'vip' %}
+                        Вы защитили VIP!
+                    {% else %}
+                        Вы остановили {{ params.game_name }}!
+                    {% endif %}
+                </div>
+                <div class="results-score"></div>
+                <div class="results-table-header">Таблица результатов</div>
+                <div id="results-table">
+                    <img src="{% static 'img/loading.gif' %}">
+                </div>
+                <div class="results-actions">
+                    {% spaceless %}
+                        <form method="get" action="/#mode">
+                            <input type="submit" class="btn-menu" alt="Меню">
+                        </form>
+                        <form method="post" action="{% url 'game' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="game-type" value="{{ params.game_type }}">
+                            <input type="hidden" name="game-difficulty" value="{{ params.game_difficulty }}">
+                            <input type="hidden" name="name" value="{{ params.game_name }}">
+                            <input type="submit" class="btn-reload" alt="Перезапустить">
+                        </form>
+                        {% if params.game_difficulty < 2 %}
+                            <form method="post" action="{% url 'game' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="game-type" value="{{ params.game_type }}">
+                                <input type="hidden" name="game-difficulty" value="{{ params.game_difficulty|add:'1' }}">
+                                <input type="hidden" name="name" value="{{ params.game_name }}">
+                                <input type="submit" class="btn-next" alt="Следующий уровень сложности">
+                            </form>
+                        {% endif %}
+                    {% endspaceless %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="info">
+        <div class="header">
+            <ul>
+                <li><a href="/#mode" class="menu">Меню</a></li><li><a href="#" class="help">Помощь</a></li>
+            </ul>
+        </div>
+        <div class="friend">
+            <div class="photo"></div>
+            <div class="name"></div>
+            <div id="status"></div>
+            <div class="status clearfix">
+                <div class="bar green"></div>
+                <div class="bar red"></div>
+            </div>
+            <div class="status-message"></div>
+        </div>
+        <div class="messages-container">
+            <ul class="messages"></ul>
+        </div>
+    </div>
+    <div id="main">
+        <div class="header clearfix">
+            <div class="pull-left logo">
+                <a href="/"><img src="{% static "img/logo.png" %}"></a>
+            </div>
+            <div class="pull-left stats clearfix">
+                <div class="wrapper">
+                    <div class="stat infected"></div>
+                    <div class="stat healed"></div>
+                    <div class="stat normal">100%</div>
+                </div>
+            </div>
+        </div>
+        <div id="game-area">
+            <ul id="items">
+                <li><a href="#" class="heal"></a></li><li><a href="#" class="shield"></a></li><li><a href="#" class="exchange"></a></li>
+            </ul>
+            <svg>
+                <defs>
+                    <clippath id="clip" clipPathUnits="objectBoundingBox">
+                        <circle cx="0.5" cy="0.5" r="0.5"/>
+                    </clippath>
+                </defs>
+            </svg>
+        </div>
+    </div>
+{% endblock %}

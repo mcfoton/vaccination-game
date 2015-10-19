@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'GothamPro';
     src: url('../fonts/GothamPro.eot');
-    src: url('../fonts/GothamProd41d.eot?#iefix') format('embedded-opentype'),
+    src: url('../fonts/GothamPro.eot?#iefix') format('embedded-opentype'),
     url('../fonts/GothamPro.woff') format('woff'),
     url('../fonts/GothamPro.ttf') format('truetype'),
     url('../fonts/GothamPro.svg#GothamPro') format('svg')
@@ -9,7 +9,7 @@
 @font-face {
     font-family: 'GothamPro-Medium';
     src: url('../fonts/GothamPro-Medium.eot');
-    src: url('../fonts/GothamPro-Mediumd41d.eot?#iefix') format('embedded-opentype'),
+    src: url('../fonts/GothamPro-Medium.eot?#iefix') format('embedded-opentype'),
     url('../fonts/GothamPro-Medium.woff') format('woff'),
     url('../fonts/GothamPro-Medium.ttf') format('truetype'),
     url('../fonts/GothamPro-Medium.svg#GothamPro-Medium') format('svg')

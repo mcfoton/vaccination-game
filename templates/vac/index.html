@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+{% load staticfiles vac %}
+
+{% block extrahead %}
+    <link rel="stylesheet" href="{% static "css/index.css" %}">
+{% endblock %}
+
+{% block content %}
+    <div class="game-settings">
+        <div class="main">
+            <div class="container">
+                <a class="vac-c" href="/"><img src="{% static "img/vac-logo.png" %}"></a>
+                <div id="preview">
+                    <a class="minzdrav" href="#"><img src="{% static "img/mizdrav-logo.png" %}"></a>
+                    <div class="presents">Представляет:</div>
+                    <div class="description">Небольшой текст, в котором рассказывается как важна вакцинация и о чем игра.</div>
+                    <a href="{% if user.is_authenticated %}#mode{% else %}#{% endif %}" class="btn btn-gray" id="start-game">Начать игру</a>
+                </div>
+                <div id="mode">
+                    <div class="game-type">Тип игры:</div>
+                    <div class="game-types">
+                        {% spaceless %}
+                            {% for type in types %}
+                                <div class="game-type-item{% if forloop.counter == 1 %} chosen{% endif %}" data-type="{{ type.id }}">
+                                    <div class="game-type-image color color-{{ forloop.counter }}"></div>
+                                    <div class="game-type-image baw baw-{{ forloop.counter }}"></div>
+                                    <div class="game-type-name"></div>
+                                </div>
+                            {% endfor %}
+                        {% endspaceless %}
+                    </div>
+                    <ul class="type-descriptions">
+                        {% for type in types %}
+                            <div id="type-description-{{ type.id }}">{{ type.description }}</div>
+                        {% endfor %}
+                    </ul>
+                    <div class="game-type-descriptions">
+                        <div class="wrapper">
+                            <div class="current">
+                                {{ types.0.description | safe }}
+                            </div>
+                            <div class="next">
+
+                            </div>
+                        </div>
+                    </div>
+                    <form method="post" action="{% url 'game' %}" id="settings-form">
+                        <input id="virus-name" name="name" placeholder="Имя вируса">
+                        <div class="game-difficulty">Уровень сложности:</div>
+                        <div class="game-difficulties">
+                            <div class="game-difficulty-item" data-difficulty="0">
+                                Легко
+                            </div><div class="game-difficulty-item chosen" data-difficulty="1">
+                                Средне
+                            </div><div class="game-difficulty-item" data-difficulty="2">
+                                Сложно
+                            </div>
+                        </div>
+                        <div class="difficulty-descriptions">
+                            {% for type in types %}
+                                {% for d in type.difficulties %}
+                                    <div id="difficulty-description-{{ type.id }}-{{ forloop.counter0 }}">
+                                        {{ d.description | ul_split:'difficulty-description-item' | safe }}
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                        <div class="game-difficulty-descriptions">
+                            <div class="wrapper">
+                                <div class="current">
+                                    {{ types.0.difficulties.1.description | ul_split:'difficulty-description-item' | safe }}
+                                </div>
+                                <div class="next">
+
+                                </div>
+                            </div>
+                        </div>
+                        {% csrf_token %}
+                        <input type="hidden" name="game-type" value="{{ types.0.id }}">
+                        <input type="hidden" name="game-difficulty" value="1">
+                        <input type="submit" value="Начать игру" class="btn btn-gray">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="sub">
+            <div class="container">
+                <div>Войти через:</div>
+                <div class="socials">
+                    <a href="{% url 'social:begin' 'vk' %}" class="social social-vk">Vkontakte</a>
+{#                    <a href="{% url 'social:begin' 'facebook' %}" class="social social-fb">Facebook</a>#}
+{#                    <a href="#" class="social social-ok">Odnoklassniki</a>#}
+                </div>
+                <div>или</div>
+                <a href="#mode" class="without">играть без авторизации</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
